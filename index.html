@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator Sisa Masa Aktif</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    label { display: block; margin-top: 10px; }
+    input { padding: 5px; margin-top: 5px; }
+    button { margin-top: 15px; padding: 10px 20px; }
+    #result { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h2>Kalkulator Untuk menghitung jumlah yang harus direffund</h2>
+
+  <label for="harga">Masukan Harga jual Kamu (Rp):</label>
+  <input type="number" id="harga" placeholder="Contoh: 40000">
+
+  <label for="masaAktif">Masukan Sisa Masa Aktif (hari):</label>
+  <input type="number" id="masaAktif" placeholder="Contoh: 12">
+
+  <button onclick="hitung()">Hitung</button>
+
+  <div id="result"></div>
+
+  <script>
+    function hitung() {
+      const harga = parseFloat(document.getElementById('harga').value);
+      const masaAktif = parseInt(document.getElementById('masaAktif').value);
+
+      if (isNaN(harga) || isNaN(masaAktif)) {
+        document.getElementById('result').innerText = 'Mohon isi semua nilai dengan benar.';
+        return;
+      }
+
+      const perHari = harga / 30;
+      const total = perHari * masaAktif;
+
+      document.getElementById('result').innerText =
+        `Harga per hari: Rp ${perHari.toFixed(2)}\nTotal: Rp ${total.toFixed(0)}`;
+    }
+  </script>
+
+</body>
+</html>
